@@ -4,6 +4,15 @@
       "intent": "BeginningGameIntent"
     },
     {
+      "intent": "AnswerIntentA"
+    },
+    {
+      "intent": "AnswerIntentB"
+    },
+    {
+      "intent": "AnswerIntentC"
+    },
+    {
       "intent": "AMAZON.StopIntent"
     },
     {
