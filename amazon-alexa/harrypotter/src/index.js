@@ -66,6 +66,9 @@ var houseTally = [
   }
 ];
 
+var gameStarted = false;
+var questionIndex = 0;
+
 exports.handler = function( event, context ) {
     var say = "";
     var shouldEndSession = false;
@@ -81,17 +84,21 @@ exports.handler = function( event, context ) {
 
     } else {
         var IntentName = event.request.intent.name;
-        var questionIndex = 0;
-        if (IntentName === "BeginningGameIntent") {
+        if (IntentName === "BeginningGameIntent" && gameStarted === false) {
             say="Let's Begin! " + questions[questionIndex].question + "? A. " + questions[questionIndex].answers.a + ". B. " +
             questions[questionIndex].answers.b + ". Or C. " + questions[questionIndex].answers.c + ".";
+            gameStarted = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AnswerIntentA" || IntentName === "AnswerIntentB" || IntentName === "AnswerIntentC"){
-            addPoints(intentName, currentQuestionIndex);
-            currentQuestionIndex++;
-            say = "Okay, next question."
-            if(currentQuestionIndex===questions.length){
-              say = determineHouse(houseTally) + "!";
+
+            addPoints(IntentName, questionIndex);
+            questionIndex++;
+            if(questionIndex===questions.length){
+              say = "Congratulations! You Are... " + determineHouse(houseTally) + "!";
+              shouldEndSession = true;
+            } else {
+              say = "Okay, next question. " + questions[questionIndex].question + "? A. " + questions[questionIndex].answers.a + ". B. " +
+              questions[questionIndex].answers.b + ". Or C. " + questions[questionIndex].answers.c + ".";
             }
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
@@ -99,7 +106,8 @@ exports.handler = function( event, context ) {
             shouldEndSession = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.RepeatIntent"){
-            say = questions[questionIndex].question;
+            say = questions[questionIndex].question + "? A. " + questions[questionIndex].answers.a + ". B. " +
+            questions[questionIndex].answers.b + ". Or C. " + questions[questionIndex].answers.c + ".";
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.HelpIntent" ) {
             say = "Say a, b, or c depending on your answer."

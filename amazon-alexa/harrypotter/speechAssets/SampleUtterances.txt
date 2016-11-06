@@ -6,6 +6,9 @@ AMAZON.RepeatIntent repeat
 AMAZON.RepeatIntent will you repeat that
 AMAZON.RepeatIntent can you repeat please
 
-AnswerIntentA a
-AnswerIntentB b
-AnswerIntentC c
+AnswerIntentA First
+AnswerIntentA A
+AnswerIntentB Second
+AnswerIntentB B
+AnswerIntentC Third
+AnswerIntentC C
