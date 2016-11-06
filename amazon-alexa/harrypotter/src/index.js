@@ -48,16 +48,20 @@ var questions = [
 ];
 
 var houseTally = [
-  {"name":"Gryffindor",
+  {
+    "name":"Gryffindor",
     "points": 0
   },
-  {"name":"Slytherin",
+  {
+    "name":"Slytherin",
     "points": 0
   },
-  {"name":"Hufflepuff",
+  {
+    "name":"Hufflepuff",
     "points": 0
   },
-  {"name":"Ravenclaw",
+  {
+    "name":"Ravenclaw",
     "points": 0
   }
 ];
