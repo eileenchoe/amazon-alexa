@@ -47,7 +47,20 @@ var questions = [
     }
 ];
 
-var houseTally = {"gryffindor": 0, "slytherin": 0, "hufflepuff": 0, "ravenclaw": 0};
+var houseTally = [
+  {"name":"Gryffindor",
+    "points": 0
+  },
+  {"name":"Slytherin",
+    "points": 0
+  },
+  {"name":"Hufflepuff",
+    "points": 0
+  },
+  {"name":"Ravenclaw",
+    "points": 0
+  }
+];
 
 exports.handler = function( event, context ) {
     var say = "";
@@ -73,7 +86,7 @@ exports.handler = function( event, context ) {
             currentQuestionIndex++;
             say = "Okay, next question."
             if(currentQuestionIndex===questions.length){
-              say = pickHouse() + "!";
+              say = determineHouse(houseTally) + "!";
             }
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
