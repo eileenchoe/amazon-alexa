@@ -1,16 +1,3 @@
-AnswerIntent the answer is {Answer}
-AnswerIntent my answer is {Answer}
-AnswerIntent I choose {Answer}
-AnswerIntent I would do {Answer}
-AnswerIntent {Answer} is my answer
-AnswerOnlyIntent {Answer}
-
-AMAZON.StartOverIntent start game
-AMAZON.StartOverIntent new game
-AMAZON.StartOverIntent start
-AMAZON.StartOverIntent start new game
-
-AMAZON.RepeatIntent repeat
-AMAZON.RepeatIntent repeat please
-AMAZON.RepeatIntent could you repeat that please
-AMAZON.RepeatIntent jen was talking sorry can you say that again
+BeginningGameIntent yes
+BeginningGameIntent yeah
+BeginningGameIntent sure
