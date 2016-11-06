@@ -67,17 +67,19 @@ exports.handler = function( event, context ) {
 
     } else {
         var IntentName = event.request.intent.name;
+        var questionIndex = 0;
         if (IntentName === "BeginningGameIntent") {
-            say="Let's Begin! " + questions[0].question;
+            say="Let's Begin! " + questions[questionIndex].question;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
             say = "Thanks for playing!";
             shouldEndSession = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
-
-
+        } else if (IntentName === "AMAZON.RepeatQuestionIntent"){
+            say = questions[questionIndex].question;
+            context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.HelpIntent" ) {
-            say = "Just say the name of a U.S. State, such as Massachusetts or California."
+            say = "Say a, b, or c depending on your answer."
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
 
         }
