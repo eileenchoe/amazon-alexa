@@ -1,0 +1,5 @@
+AsteroidRequestIntent tell me about asteroids
+AsteroidRequestIntent how many asteroids
+AsteroidRequestIntent describe asteroids
+AsteroidRequestIntent asteroids
+AsteroidRequestIntent yes
