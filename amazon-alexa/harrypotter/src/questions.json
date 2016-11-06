@@ -1,17 +1,42 @@
-
-
-
-
-
-questions[1].question = "If Death were to offer you a gift, which would you take?"
-
-questions[1].answers = ["A. ", "", ""]
-
-
-
-
-Questions[1].question
-Questions[1].answers.a
-
-
-Questions = [
+var questions = [
+    {
+        "question": "If Death were to offer you a gift, which would you take?",
+        "answers":{
+            "a":"Cloak of invisibility ",
+            "b":"Resurrection stone",
+            "c":"Elder Wand",
+        }
+    },
+    {
+        "question": "What do you drink to stay awake?",
+        "answers":{
+            "a":"Coffee",
+            "b":"Tea",
+            "c":"Orange Juice",
+        }
+    },
+    {
+        "question": "What is your favorite mythical creature?",
+        "answers":{
+            "a":"A Gryffin",
+            "b":"A Raven",
+            "c":"A Huffle",
+        }
+    },
+    {
+        "question": "You catch your friend cheating on an exam. What do you do?",
+        "answers":{
+            "a":"I would get up and tell the teacher right in the middle of the exam.",
+            "b":"I would tell the teacher after the exam.",
+            "c":"I would cheat off of them",
+        }
+    },
+    {
+        "question": "What is your favorite subject?",
+        "answers":{
+            "a":"Potions",
+            "b":"Charms",
+            "c":"Herbology",
+        }
+    }
+];
