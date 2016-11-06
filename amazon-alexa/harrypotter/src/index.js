@@ -53,9 +53,6 @@ exports.handler = function( event, context ) {
     var say = "";
     var shouldEndSession = false;
     var sessionAttributes = {};
-    var myState = "";
-    var pop = 0;
-    var rank = 0;
 
     if (event.session.attributes) {
         sessionAttributes = event.session.attributes;
@@ -71,11 +68,19 @@ exports.handler = function( event, context ) {
         if (IntentName === "BeginningGameIntent") {
             say="Let's Begin! " + questions[questionIndex].question;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
+        } else if (IntentName === "AnswerIntentA" || IntentName === "AnswerIntentB" || IntentName === "AnswerIntentC"){
+            addPoints(intentName, currentQuestionIndex);
+            currentQuestionIndex++;
+            say = "Okay, next question."
+            if(currentQuestionIndex===questions.length){
+              say = pickHouse() + "!";
+            }
+            context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
             say = "Thanks for playing!";
             shouldEndSession = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
-        } else if (IntentName === "AMAZON.RepeatQuestionIntent"){
+        } else if (IntentName === "AMAZON.RepeatIntent"){
             say = questions[questionIndex].question;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.HelpIntent" ) {

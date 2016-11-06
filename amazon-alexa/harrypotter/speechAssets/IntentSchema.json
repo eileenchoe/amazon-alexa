@@ -19,7 +19,7 @@
       "intent": "AMAZON.CancelIntent"
     },
     {
-      "intent": "AMAZON.RepeatQuestionIntent"
+      "intent": "AMAZON.RepeatIntent"
     }
   ]
 }

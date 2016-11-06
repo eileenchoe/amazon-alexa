@@ -2,9 +2,9 @@ BeginningGameIntent yes
 BeginningGameIntent yeah
 BeginningGameIntent sure
 
-AMAZON.RepeatQuestionIntent repeat
-AMAZON.RepeatQuestionIntent will you repeat that
-AMAZON.RepeatQuestionIntent can you repeat please
+AMAZON.RepeatIntent repeat
+AMAZON.RepeatIntent will you repeat that
+AMAZON.RepeatIntent can you repeat please
 
 AnswerIntentA a
 AnswerIntentB b
