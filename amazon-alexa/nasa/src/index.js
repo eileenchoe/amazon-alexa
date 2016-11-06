@@ -17,62 +17,17 @@ exports.handler = function( event, context ) {
     }
 
     if (event.request.type === "LaunchRequest") {
-        say = "Welcome to Asteroid Tracker! Do you want to know about asteroids today?";
+        say = "Welcome to asteroid tracker. Say yes to continue.";
         context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
 
     } else {
         var IntentName = event.request.intent.name;
-
         if (IntentName === "AsteroidRequestIntent") {
-
-            if (event.request.intent.slots.usstate.value) {
-
-                myState = event.request.intent.slots.usstate.value;
-
-
-                // call external rest service over https post
-                var post_data = {"usstate": myState};  
-
-                var post_options = { 
-                    host:  'rmwum5l4zc.execute-api.us-east-1.amazonaws.com', 
-                    port: '443', 
-                    path: '/prod/stateresource', 
-                    method: 'POST', 
-                    headers: { 
-                        'Content-Type': 'application/json', 
-                        'Content-Length': Buffer.byteLength(JSON.stringify(post_data)) 
-                    } };
-  var post_req = https.request(post_options, function(res) { 
-                        res.setEncoding('utf8'); 
-                        var returnData = ""; 
-                        res.on('data', function (chunk) { 
-                            returnData += chunk; 
-                        }); 
-                        res.on('end', function () {
-                            // returnData: {"usstate":"Delaware","attributes":[{"population":900000},{"rank":45}]}
-
-                            pop = JSON.parse(returnData).attributes[0].population;
-
-                            say = "The population of " + myState + " is " + pop;
-
-                            // add the state to a session.attributes array
-                            if (!sessionAttributes.requestList) {
-                                sessionAttributes.requestList = [];
-                            }
-                            sessionAttributes.requestList.push(myState);
-
-                            // This line concludes the lambda call.  Move this line to within any asynchronous callbacks that return and use data.
-                            context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
-
-                        }); 
- });
-  post_req.write(JSON.stringify(post_data));
- post_req.end();
-
-            }
-
+          console.log("In asteroid request");
+            say="There are 42 asteroids";
+            context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
         } else if (IntentName === "AMAZON.StopIntent" || IntentName === "AMAZON.CancelIntent") {
-            say = "You asked for " + sessionAttributes.requestList.toString() + ". Thanks for playing!";
+            say = "Thanks for playing!";
             shouldEndSession = true;
             context.succeed({sessionAttributes: sessionAttributes, response: buildSpeechletResponse(say, shouldEndSession) });
 

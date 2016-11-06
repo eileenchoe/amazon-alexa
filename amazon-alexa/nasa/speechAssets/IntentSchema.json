@@ -1,7 +1,7 @@
 {
   "intents": [
     {
-      "intent": "AsteroidRequestIntent",
+      "intent": "AsteroidRequestIntent"
     },
     {
       "intent": "AMAZON.StopIntent"
