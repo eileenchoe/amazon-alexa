@@ -1,0 +1,17 @@
+
+
+
+
+
+questions[1].question = "If Death were to offer you a gift, which would you take?"
+
+questions[1].answers = ["A. ", "", ""]
+
+
+
+
+Questions[1].question
+Questions[1].answers.a
+
+
+Questions = [
