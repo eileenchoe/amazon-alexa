@@ -149,6 +149,8 @@ var questions = [
 ];
 
 
+var houseTally = {'gryffindor': 0, 'slytherin':0, 'hufflepuff': 0, 'ravenclaw': 0}
+
 // Route the incoming request based on type (LaunchRequest, IntentRequest,
 // etc.) The JSON body of the request is provided in the event parameter.
 exports.handler = function (event, context) {
